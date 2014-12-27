@@ -38,8 +38,6 @@ public abstract class AbstractAnchorListItem extends AbstractListItem
 
     protected final Anchor anchor;
     
-    private HandlerRegistration handlerRegistration;
-
     protected AbstractAnchorListItem() {
         anchor = new Anchor();
         add(anchor, (Element) getElement());
@@ -67,8 +65,7 @@ public abstract class AbstractAnchorListItem extends AbstractListItem
 
     @Override
     public HandlerRegistration addClickHandler(final ClickHandler handler) {
-    	
-        return handlerRegistration = anchor.addClickHandler(handler);
+        return anchor.addClickHandler(handler);
     }
 
     @Override
@@ -201,9 +198,10 @@ public abstract class AbstractAnchorListItem extends AbstractListItem
     public boolean isIconFixedWidth() {
         return anchor.isIconFixedWidth();
     }
+
     @Override
     public void setEnabled(boolean enabled){
-    	super.setEnabled(enabled);
-    	anchor.setEnabled(enabled);
+        super.setEnabled(enabled);
+        anchor.setEnabled(enabled);
     }
 }
